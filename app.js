@@ -15,7 +15,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-connectDB(); // Connect to MongoDB 
+connectDB(); // Connect to MongoDB  
 
 // Use express-ejs-layouts middleware
 app.use(expressLayouts);
@@ -29,9 +29,10 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Routes
 app.use('/', require('./routes/index')); 
-app.use('/users', require('./routes/users'));
+const usersRouter = require('./routes/users');
+app.use('/', usersRouter);  
 
 // Server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000; 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));  
        
