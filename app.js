@@ -1,5 +1,5 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const connectDB = require('./config/database'); // Import the database connection function
 const passport = require('passport');
 const session = require('express-session');
 const flash = require('connect-flash');
@@ -7,8 +7,6 @@ const expressLayouts = require('express-ejs-layouts');
 const app = express();
 const path = require('path');
 
-// Database configuration
-mongoose.connect('mongodb://localhost:27017/ecommerce', { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -16,6 +14,8 @@ app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+
+connectDB(); // Connect to MongoDB 
 
 // Use express-ejs-layouts middleware
 app.use(expressLayouts);
