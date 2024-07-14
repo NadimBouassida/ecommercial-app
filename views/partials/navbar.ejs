@@ -1,48 +1,73 @@
 <!-- views/partials/navbar.ejs -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container">
-    <a style="color: black;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;" class="navbar-brand" href="/"
-      >
-      AL JAW
-      <img
-        src="https://res.cloudinary.com/dz0hgpt05/image/upload/c_scale,e_auto_contrast,q_100,r_0,w_50/v1720956722/EL-Jawel-logo_zepc6h.png"
-        alt="Logo image"
-      />WAL</a
-    >
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav container-fluid ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/services">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/contact">Contact</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/users/login">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/users/register">Register</a>
-        </li>
-      </ul>
-    </div>
+  <a
+    style="
+      color: black;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+        'Lucida Sans', Arial, sans-serif;
+    "
+    class="navbar-brand"
+    href="/"
+  >
+    AL JAW
+    <img
+      src="https://res.cloudinary.com/dz0hgpt05/image/upload/c_scale,e_auto_contrast,q_100,r_0,w_60/v1720956722/EL-Jawel-logo_zepc6h.png"
+      alt="Logo image"
+      style="border-radius: 50%"
+    />WAL</a
+  >
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav container-fluid ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/services">Services</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/contact">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/users/login">Login</a>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="#">/</a></li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/register">Register</a>
+      </li>
+      <!-- Add to Cart Icon -->
+      <li class="nav-item">
+        <a
+          class="nav-link position-relative"
+          href="/cart"
+          style="max-height: 30px"
+        >
+          <i class="fa-solid fa-shopping-cart"></i>
+          <!-- Counter Badge -->
+          <span
+            class="position-relative top-100 start-100 translate-middle badge rounded-pill bg-danger"
+          >
+            0
+            <!-- Dynamically update this number based on cart items -->
+            <span class="visually-hidden">items in cart</span>
+          </span>
+        </a>
+      </li>
+    </ul>
   </div>
 </nav>
