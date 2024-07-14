@@ -14,12 +14,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-connectDB(); // Connect to MongoDB
+connectDB(); // Connect to MongoDB 
 
 // Use express-ejs-layouts middleware
 app.use(expressLayouts);
 
-// Set EJS as the view engine
+// Set EJS as the view engine 
 app.engine("ejs", require("ejs").renderFile);
 app.set("view engine", "ejs");
 
@@ -28,12 +28,14 @@ app.set("views", path.join(__dirname, "views"));
 
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, "public")));
+console.log(path.join(__dirname, "public"));
 
-// Routes
-app.use("/", require("./routes/index"));
+// Routes 
+app.use("/", require("./routes/index")); 
 const usersRouter = require("./routes/users");
 app.use("/users", usersRouter);
 
 // Server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000; 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+ 
