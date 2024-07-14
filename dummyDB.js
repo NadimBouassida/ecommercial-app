@@ -69,43 +69,35 @@ const fetchAndStoreImageUrls = async () => {
     api_secret: process.env.CLOUDINARY_API_SECRET,
   });
   // Fetch images from Cloudinary
-  cloudinary.api.resources(
-    { type: "upload", max_results: 500 }, // Adjust parameters as needed
-    async (error, result) => {
-      if (error) {
-        console.error("Error fetching images from Cloudinary:", error);
-        return;
+  try {
+    const result = await cloudinary.search
+      .expression(`folder:${"products"}`) // Filter by folder name
+      // .sort_by("public_id", "desc") // Optional: Sort the results
+      // .max_results(30) // Optional: Limit the number of results
+      .execute();
+    const { resources } = result;
+    try {
+      const products = await Product.find();
+      for (let i = 0; i < products.length; i++) {
+        // Assign the URL to the imageUrl field
+        products[i].imageUrl = resources[i].secure_url;
+        // Save the updated product
+        await products[i].save();
       }
-
-      const { resources } = result;
-      // Declare the result variable and extract URLs
-      console.log("fetching images from Cloudinary:", resources);
-      try {
-        const products = await Product.find();
-        for (let i = 0; i < products.length; i++) {
-          // Assign the URL to the imageUrl field
-          products[i].imageUrl = resources[i].secure_url;
-          // Save the updated product
-          await products[i].save();
-          await Product.updateOne(
-            { _id: products[i]._id },
-            { $set: { imageUrl: resources[i].secure_url } }
-          );
-        }
-      } catch (error) {
-        //Quick error handling
-        console.error("Error fetching images from Cloudinary:", error);
-        return;
-      } finally {
-        // Close the MongoDB connection
-        await mongoose.disconnect();
-        console.log("MongoDB connection closed.");
-      }
-      console.log("All images have been stored in the database.");
+      console.log("Images updated successfully");
+    } catch (error) {
+      //Quick error handling
+      console.error("Error updating images:", error);
+      return;
     }
-  );
+  } catch (error) {
+    console.error("Error fetching images from Cloudinary:", error);
+  } finally {
+    // Close the MongoDB connection
+    await mongoose.disconnect();
+    console.log("MongoDB connection closed.");
+  }
 };
-
 
 // Call the function to fetch and store image URLs
 fetchAndStoreImageUrls();
