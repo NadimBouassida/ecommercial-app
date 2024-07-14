@@ -28,13 +28,13 @@ app.set("views", path.join(__dirname, "views"));
 
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, "public")));
-console.log(path.join(__dirname, "public"));
+console.log(path.join(__dirname, "public")); 
 
 // Routes 
 app.use("/", require("./routes/index")); 
 const usersRouter = require("./routes/users");
 app.use("/users", usersRouter);
-
+ 
 // Server
 const PORT = process.env.PORT || 3000; 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
