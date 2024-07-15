@@ -7,7 +7,7 @@ const Product = require("../models/Product"); // Import the Product model
 router.get('/', async (req, res) => {
     try {
         const products = await Product.find(); // Fetch all products from the database
-        res.render('index', { products }); // Pass the products array to the index.ejs template
+        res.render('index', { products, user: req.user}); // Pass the products array to the index.ejs template
     } catch (error) {
         console.error(error);
         res.status(500).send('Error fetching products');
