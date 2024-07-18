@@ -43,33 +43,35 @@
           <a class="nav-link" href="/about">About</a>
         </li>
       </ul>
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto container">
         <% if (user) { %>
-        <!-- Example single danger button -->
-        <div class="btn-group" style="padding-right: 20px">
-          <button type="button" class="btn btn-secondary">
-            <div style="display: flex; padding: 4px">
-              <i class="fa-solid fa-user" style="margin-top: 4px"></i>
-              <span style="display: block; margin-left: 8px">
-                <%= user.name %>
-              </span>
-            </div>
+        <div
+          class="btn-group nav-item"
+          style="
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(#ff7f07, #e4cd00);
+          "
+        >
+          <button type="button" class="btn">
+            <i class="fa-solid fa-user"></i>
+            <span> <%= user.name %> </span>
           </button>
           <button
             type="button"
-            class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+            class="btn dropdown-toggle dropdown-toggle-split"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
             <span class="visually-hidden">Toggle Dropdown</span>
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Logout</a>
+            <li>
+              <a class="dropdown-item" href="#">Logout</a>
             </li>
           </ul>
         </div>
