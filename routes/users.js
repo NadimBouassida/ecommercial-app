@@ -1,3 +1,5 @@
+const Product = require("../models/Product"); // Import the Product model
+
 // routes/users.js
 const express = require("express");
 const router = express.Router();
@@ -77,5 +79,14 @@ router.post("/register", (req, res) => {
     });
   }
 });
+
+router.get("/logout", async (req, res) => {
+  req.user = null;
+  req.flash("success_msg", "You are logged out");
+  const products = await Product.find();
+  res.render("index", {products});
+});
+
+
 
 module.exports = router;

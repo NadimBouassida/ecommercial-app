@@ -1,4 +1,9 @@
-nav ul li a:hover {
+nav ul li a.nav-link {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li.nav-item a:hover {
   cursor: pointer;
   text-decoration: underline;
 }
