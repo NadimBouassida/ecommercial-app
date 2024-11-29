@@ -1,0 +1,6 @@
+{
+  "workbench.tree.enableStickyScroll": false,
+  "notebook.stickyScroll.mode": "indented",
+  "editor.stickyScroll.scrollWithEditor": false,
+  "editor.stickyScroll.enabled": false
+}
