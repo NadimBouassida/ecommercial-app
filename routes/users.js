@@ -80,12 +80,18 @@ router.post("/register", (req, res) => {
   }
 });
 
-router.get("/logout", async (req, res) => {
-  req.user = null;
-  req.flash("success_msg", "You are logged out");
-  const products = await Product.find();
-  res.render("index", {products});
+router.get("/logout", (req, res) => {
+  req.logout((err) => {
+    if (err) {
+      console.error("Logout error:", err);
+      req.flash("error", "An error occurred during logout:", err);
+      return res.redirect("/");
+    }
+    req.flash("success", "You have successfully logged out.");
+    res.redirect("/users/login"); // Redirect to the login page or any desired route
+  });
 });
+
 
 
 
