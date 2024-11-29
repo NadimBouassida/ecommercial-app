@@ -1,0 +1,35 @@
+nav ul li.nav-item a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+nav ul li.nav-item a.nav-link {
+  color: white;
+}
+
+.custom-navbar {
+  background-color: #ff7f07 !important;
+}
+
+.navbar-right {
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  .navbar-nav li {
+    margin-bottom: 10px;
+  }
+  .navbar-toggler {
+    display: block;
+  }
+  .navbar-collapse {
+    display: none;
+  }
+  .navbar-collapse.show {
+    display: block;
+  }
+  
+}
