@@ -28,11 +28,12 @@
   <body>
     <!-- Include the navbar partial -->
     <%- include('partials/navbar'); -%>
-    <img class= "banner" src="/images/AFFARBanner.webp" alt="AFFAR Banner" />
     <div class="container mt-4">
       <!-- This is where the content from other views will be inserted -->
       <%- body %>
     </div>
+    <!-- Include the footer partial -->
+    <%- include('partials/footer'); -%>
     <!-- Include Bootstrap JS (optional) -->
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
