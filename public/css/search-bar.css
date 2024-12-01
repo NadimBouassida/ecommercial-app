@@ -1,6 +1,6 @@
 .search-bar {
   position: relative;
-  width: 100%;
+  width: 20rem;
   max-width: 500px;
   margin: 0 auto;
   border-radius: 0.5rem 0;
@@ -26,7 +26,7 @@
 }
 
 #search-button {
-  width: 40%;
+  width: 3.5rem;
   height: 2.5rem;
   padding: 0.5rem;
   font-size: 0.7rem;
@@ -46,6 +46,6 @@
 
 @media (max-width: 768px) {
   .search-bar {
-    width: 40vw;
+    width: 15rem;
   }
 }
