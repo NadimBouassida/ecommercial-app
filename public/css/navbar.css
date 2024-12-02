@@ -7,7 +7,7 @@ nav ul li.nav-item a.nav-link {
 }
 
 .custom-navbar {
-  background-color: #ff7f07 !important;
+  background-color: #ff7f07;
 }
 
 .navbar-right {
@@ -16,7 +16,7 @@ nav ul li.nav-item a.nav-link {
 
 @media (max-width: 768px) {
   .navbar-nav {
-    flex-direction: column;
+    flex-direction: column ;
     align-items: center;
   }
   .navbar-nav li {

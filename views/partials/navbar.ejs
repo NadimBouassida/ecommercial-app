@@ -1,16 +1,12 @@
 <link rel="stylesheet" href="/css/navbar.css" />
 <link rel="stylesheet" href="/css/search-bar.css" />
 <!-- Navigation bar with custom styling and full width -->
-<nav class="navbar navbar-expand-lg custom-navbar w-100 fixed-top">
+<nav class="navbar navbar-expand-md custom-navbar w-100 fixed-top">
   <!-- Brand logo with a link to the homepage -->
   <a class="navbar-brand" href="/">AFFAR</a>
-  <div class="search-bar">
-    <input type="text" id="search-input" placeholder="Search for products..." />
-    <button id="search-button"><img src="/icons/search.svg" alt="search icon"></button>
-  </div>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <!-- Left-aligned navigation links -->
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto navbar-left">
       <!-- Home link -->
       <li class="nav-item">
         <a class="nav-link" href="/">Home</a>
@@ -28,6 +24,18 @@
         <a class="nav-link" href="/about">About</a>
       </li>
     </ul>
+    <!-- Search bar container -->
+    <div class="search-bar">
+      <input
+        id="search-input"
+        type="search"
+        id="searchField"
+        placeholder="Search for products..."
+      />
+      <button id="search-button" type="submit" id="searchButton">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
     <!-- Right-aligned navigation options -->
     <ul class="navbar-nav navbar-right">
       <!-- Check if the user is logged in -->
@@ -94,4 +102,5 @@
       document.querySelector(".navbar-collapse").classList.toggle("show");
     });
   </script>
+  <script src="/scripts/moveSearchBar.js"></script>
 </nav>
