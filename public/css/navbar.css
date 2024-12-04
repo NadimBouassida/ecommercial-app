@@ -1,3 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap");
+
+.navbar-brand {
+  font-family: "Dancing Script", "Open Sans", sans-serif;
+  font-size: 32px;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  background: linear-gradient(to right, #333, #b1b1b1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 10px;
+  border-right: 2px solid #6b6b6b;
+}
+
+.navbar-brand:hover {
+  background: white;
+  background-clip: text;
+}
+
 nav ul li.nav-item a:hover {
   cursor: pointer;
   text-decoration: underline;
@@ -14,9 +34,13 @@ nav ul li.nav-item a.nav-link {
   margin-left: auto;
 }
 
+#login-link {
+  border-right: 1px solid gray;
+}
+
 @media (max-width: 768px) {
   .navbar-nav {
-    flex-direction: column ;
+    flex-direction: column;
     align-items: center;
   }
   .navbar-nav li {
@@ -25,11 +49,28 @@ nav ul li.nav-item a.nav-link {
   .navbar-toggler {
     display: block;
   }
+
+  .navbar-toggler:focus {
+    box-shadow: none;
+    border-color: white;
+  }
+
   .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 40%;
+    background-color: #ff7f07;
+    border: 1px solid #050505;
+    padding: 20px;
     display: none;
   }
+
   .navbar-collapse.show {
     display: block;
   }
-  
+
+  #login-link {
+    border: none;
+  }
 }
