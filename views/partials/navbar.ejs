@@ -69,19 +69,17 @@
       <% } else { %>
       <!-- Login and Register links for guests -->
       <li class="nav-item d-flex flex-row">
-        <a class="nav-link" href="/users/login">Login</a>
-        <a class="nav-link" href="/users/register">Register</a>
+        <a class="nav-link" id="login-link"  href="/users/login">Login</a>
       </li>
       <% } %>
       <!-- Shopping cart link with item count badge -->
       <li class="nav-item">
-        <a class="nav-link" href="/cart" style="max-height: 30px">
-          <i class="fa-solid fa-shopping-cart"></i>
-          <span class="badge rounded-pill bg-danger">
-            0
-            <span class="visually-hidden">items in cart</span>
-          </span>
-        </a>
+        <div class="d-flex flex-col">
+          <a class="nav-link" href="/cart" style="max-height: 30px">
+            <i class="fa-solid fa-shopping-cart"></i>
+            <span class="badge rounded-pill bg-danger"> 0 </span>
+          </a>
+        </div>
       </li>
     </ul>
   </div>
@@ -96,11 +94,6 @@
   >
     <span class="navbar-toggler-icon"></span>
   </button>
-  <script>
-    const nav_toggle = document.querySelector(".navbar-toggler");
-    nav_toggle.addEventListener("click", () => {
-      document.querySelector(".navbar-collapse").classList.toggle("show");
-    });
-  </script>
+  <script src="/scripts/navbarCollapse.js"></script>
   <script src="/scripts/moveSearchBar.js"></script>
 </nav>
