@@ -7,10 +7,11 @@ i18n.configure({
   directory: path.join(__dirname, process.env.LOCALES_DIR || "../locales"),
   defaultLocale: process.env.DEFAULT_LOCALE || "en",
   queryParameter: "lang",
-  cookie: "locale",
+  cookie: "lang",
   autoReload: true,
   syncFiles: true,
   objectNotation: true,
 });
 
 module.exports = i18n;
+

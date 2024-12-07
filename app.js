@@ -1,78 +1,69 @@
-/**
- * This is the main file of the eCommerce app.
- * It sets up the server, middleware, routes, and database connection.
- */
+// Main application file for the eCommerce app
+// Configures server, middleware, routes, and database connection
 
 const express = require("express");
-const connectDB = require("./config/database"); // Import the database connection function
+const connectDB = require("./config/database");
 const passport = require("passport");
 const session = require("express-session");
 const flash = require("connect-flash");
 const expressLayouts = require("express-ejs-layouts");
-const app = express();
 const path = require("path");
 const i18n = require("./config/i18n.config");
+const cookieParser = require("cookie-parser");
 
-// Middleware
-app.use(express.urlencoded({ extended: true }));
-app.use(session({ secret: "secret", resave: true, saveUninitialized: true }));
+const app = express();
+
+// Middleware setup
+app.use(express.urlencoded({ extended: true })); // Parses URL-encoded bodies
+app.use(express.json()); // Parses JSON bodies
+
+// Cookie parser
+app.use(cookieParser());
+
+// Session and Passport configuration
+app.use(
+  session({
+    secret: "secret", 
+    resave: false, 
+    saveUninitialized: true, 
+    cookie: { maxAge: 60000 }, 
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+
+// Internationalization
 app.use(i18n.init);
 
-connectDB(); // Connect to MongoDB
-
-// Use express-ejs-layouts middleware
-app.use(expressLayouts);
-
-// Set EJS as the view engine
-app.engine("ejs", require("ejs").renderFile);
-app.set("view engine", "ejs");
-
-// Set the directory for views (assuming 'views' directory in the root)
-app.set("views", path.join(__dirname, "views"));
-
-// Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, "public")));
-console.log(path.join(__dirname, "public"));
-
-// Passport config
-app.use(
-  session({
-    secret: "secret", // Secret key for session hashing
-    resave: false,
-    saveUninitialized: true,
-    cookie: { maxAge: 60000 }, // Session expires after 1 minute of inactivity
-  })
-);
-
-// Flash messages
+// Flash messages middleware
 app.use((req, res, next) => {
   res.locals.messages = req.flash();
   next();
 });
 
+// User data available globally
 app.use((req, res, next) => {
-  res.locals.user = req.user || null; 
+  res.locals.user = req.user || null;
   next();
 });
 
-// Passport middleware
-app.use(passport.initialize());
-app.use(passport.session());
+// Connect to MongoDB
+connectDB();
 
-// Parse JSON bodies for incoming requests
-app.use(express.json());
+// Set up EJS view engine with layouts
+app.use(expressLayouts);
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
-// Parse URL-encoded bodies for incoming requests
-app.use(express.urlencoded({ extended: true }));
+// Serve static files
+app.use(express.static(path.join(__dirname, "public")));
 
-// Routes
+// Route definitions
 app.use("/", require("./routes/index"));
-const usersRouter = require("./routes/users");
-app.use("/users", usersRouter);
+app.use("/users", require("./routes/users"));
 
-// Server
+// Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
