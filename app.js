@@ -11,6 +11,7 @@ const flash = require("connect-flash");
 const expressLayouts = require("express-ejs-layouts");
 const app = express();
 const path = require("path");
+const i18n = require("./config/i18n.config");
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -18,6 +19,7 @@ app.use(session({ secret: "secret", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+app.use(i18n.init);
 
 connectDB(); // Connect to MongoDB
 

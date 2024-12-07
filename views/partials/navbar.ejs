@@ -1,5 +1,13 @@
 <link rel="stylesheet" href="/css/navbar.css" />
 <link rel="stylesheet" href="/css/search-bar.css" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/7.2.3/css/flag-icons.min.css"
+  integrity="sha512-bZBu2H0+FGFz/stDN/L0k8J0G8qVsAL0ht1qg5kTwtAheiXwiRKyCq1frwfbSFSJN3jooR5kauE0YjtPzhZtJQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+
 <!-- Navigation bar with custom styling and full width -->
 <nav class="navbar navbar-expand-md custom-navbar w-100 fixed-top">
   <!-- Brand logo with a link to the homepage -->
@@ -9,19 +17,19 @@
     <ul class="navbar-nav mr-auto navbar-left">
       <!-- Home link -->
       <li class="nav-item">
-        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/"><%= __('Home') %></a>
       </li>
       <!-- Services link -->
       <li class="nav-item">
-        <a class="nav-link" href="/services">Services</a>
+        <a class="nav-link" href="/services"><%= __('Services') %></a>
       </li>
       <!-- Contact link -->
       <li class="nav-item">
-        <a class="nav-link" href="/contact">Contact</a>
+        <a class="nav-link" href="/contact"><%= __('Contact') %></a>
       </li>
       <!-- About link -->
       <li class="nav-item">
-        <a class="nav-link" href="/about">About</a>
+        <a class="nav-link" href="/about"><%= __('About') %></a>
       </li>
     </ul>
     <!-- Search bar container -->
@@ -62,14 +70,18 @@
         <!-- Dropdown menu with logout option -->
         <ul class="dropdown-menu">
           <li>
-            <a class="dropdown-item" href="/users/logout">Logout</a>
+            <a class="dropdown-item" href="/users/logout"
+              ><%= __('Logout') %></a
+            >
           </li>
         </ul>
       </div>
       <% } else { %>
       <!-- Login and Register links for guests -->
       <li class="nav-item d-flex flex-row">
-        <a class="nav-link" id="login-link"  href="/users/login">Login</a>
+        <a class="nav-link" id="login-link" href="/users/login"
+          ><%=__('Login')%></a
+        >
       </li>
       <% } %>
       <!-- Shopping cart link with item count badge -->
@@ -83,6 +95,16 @@
       </li>
     </ul>
   </div>
+  <!-- Determine language -->
+  <span class="flag-icon flag-icon-gb" style="width: 30px; height: 30px"></span>
+  <!-- For English -->
+  <span class="flag-icon flag-icon-fr"></span>
+  <!-- For French -->
+
+  <a href="#" class="lang-link" data-lang="en">English</a> |
+  <a href="#" class="lang-link" data-lang="fr">Français</a>
+
+  <!-- Hamburger menu toggle button -->
   <button
     class="navbar-toggler"
     type="button"
@@ -96,4 +118,5 @@
   </button>
   <script src="/scripts/navbarCollapse.js"></script>
   <script src="/scripts/moveSearchBar.js"></script>
+  <script src="/scripts/getLangLink.js"></script>
 </nav>
