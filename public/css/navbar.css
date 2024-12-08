@@ -10,7 +10,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   padding: 10px;
-  border-right: 2px solid #6b6b6b;
+  
 }
 
 .navbar-brand:hover {
@@ -34,9 +34,6 @@ nav ul li.nav-item a.nav-link {
   margin-left: auto;
 }
 
-#login-link {
-  border-right: 1px solid gray;
-}
 
 @media (max-width: 768px) {
   .navbar-nav {
