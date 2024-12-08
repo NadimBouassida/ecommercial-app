@@ -4,7 +4,7 @@ const path = require("path");
 
 i18n.configure({
   locales: process.env.LOCALES?.split(",") || ["en", "fr"], // e.g., LOCALES=en,fr
-  directory: path.join(__dirname, process.env.LOCALES_DIR || "../locales"),
+  directory: path.join(__dirname,"../locales"),
   defaultLocale: process.env.DEFAULT_LOCALE || "en",
   queryParameter: "lang",
   cookie: "lang",
